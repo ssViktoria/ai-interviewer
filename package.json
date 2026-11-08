@@ -1,0 +1,107 @@
+{
+  "name": "ai-interviewer",
+  "desktopName": "ai-interviewer.desktop",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "description": "AI Mock Interviewer Desktop App",
+  "author": "Skhmelyuk <developer@example.com>",
+  "email": "skhmelyuk1985@gmail.com",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "expo lint",
+    "electron:dev": "concurrently -k \"npx expo start --web -c\" \"wait-on tcp:8081 && cross-env NODE_ENV=development electron ./electron/main.js\"",
+    "build:web": "npx expo export --platform web",
+    "electron:pack": "npm run build:web && electron-builder --dir",
+    "electron:dist": "npm run build:web && electron-builder",
+    "electron:dist:win": "npm run build:web && electron-builder --win",
+    "electron:dist:linux": "npm run build:web && electron-builder --linux",
+    "electron:dist:mac": "npm run build:web && electron-builder --mac"
+  },
+  "dependencies": {
+    "@expo/ui": "~58.0.27",
+    "@expo/vector-icons": "^15.0.2",
+    "@openrouter/sdk": "^1.5.57",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/bottom-tabs": "^7.21.0",
+    "expo": "^58.0.23",
+    "expo-audio": "~58.0.11",
+    "expo-constants": "~58.0.15",
+    "expo-device": "~58.0.5",
+    "expo-file-system": "~58.0.13",
+    "expo-font": "~58.0.11",
+    "expo-glass-effect": "~58.0.5",
+    "expo-haptics": "~58.0.7",
+    "expo-image": "~58.0.18",
+    "expo-linking": "~58.0.16",
+    "expo-router": "~58.0.30",
+    "expo-secure-store": "~58.0.2",
+    "expo-speech": "~58.0.3",
+    "expo-splash-screen": "~58.0.13",
+    "expo-status-bar": "~58.0.4",
+    "expo-symbols": "~58.0.4",
+    "expo-system-ui": "~58.0.7",
+    "expo-web-browser": "~58.0.7",
+    "nativewind": "^4.2.7",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-gesture-handler": "~3.3.0",
+    "react-native-reanimated": "^4.7.1",
+    "react-native-safe-area-context": "~5.11.1",
+    "react-native-screens": "~4.30.1",
+    "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.13.0",
+    "serve-handler": "^6.1.7"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "babel-preset-expo": "^58.0.24",
+    "concurrently": "^10.0.6",
+    "cross-env": "^10.1.0",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.15.3",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.3",
+    "wait-on": "^9.5.1"
+  },
+  "build": {
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "appId": "com.aiinterviewer.desktop",
+    "productName": "AI Mock Interviewer",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!node_modules/**"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Education",
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.education"
+    }
+  },
+  "private": true
+}
